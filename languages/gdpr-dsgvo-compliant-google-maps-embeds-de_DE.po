@@ -1,0 +1,253 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DSGVO Google Maps Embeds 1.2.0\n"
+"POT-Creation-Date: 2025-04-21 12:00+02:00\n"
+"PO-Revision-Date: 2025-04-21 12:00+02:00\n"
+"Last-Translator: Solution First <kontakt@m00dy.org>\n"
+"Language-Team: Solution First <kontakt@m00dy.org>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dsgvo-google-maps-plugin.php:3
+msgid "GDPR-compliant Google Maps Embeds"
+msgstr "DSGVO-konforme Google Maps Einbettungen"
+
+#: dsgvo-google-maps-plugin.php:5
+msgid "Enables GDPR-compliant embedding of multiple Google Maps iframes with user consent, selectable light/dark design, and optional privacy policy notice."
+msgstr "Ermöglicht das DSGVO-konforme Einbetten mehrerer Google Maps iframes mit Nutzereinwilligung, wählbarem Hell-/Dunkel-Design und optionalem Datenschutzhinweis."
+
+#: dsgvo-google-maps-plugin.php:22
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: dsgvo-google-maps-plugin.php:23
+msgid "Buy Professional License"
+msgstr "Professional Lizenz kaufen"
+
+#: dsgvo-google-maps-plugin.php:86
+msgid "Load Google Maps"
+msgstr "Google Maps laden"
+
+#: includes/admin.php:35
+msgid "Maps"
+msgstr "Maps"
+
+#: includes/admin.php:36
+msgid "Map"
+msgstr "Map"
+
+#: includes/admin.php:37
+msgid "Add New Map"
+msgstr "Neue Map hinzufügen"
+
+#: includes/admin.php:38
+msgid "Edit Map"
+msgstr "Map bearbeiten"
+
+#: includes/admin.php:39
+msgid "All Maps"
+msgstr "Alle Maps"
+
+#: includes/admin.php:71
+msgid "Maximum %d maps allowed."
+msgstr "Maximal %d Maps erlaubt."
+
+#: includes/admin.php:71
+msgid "Enter a valid license key under the - Maps > License - menu to unlock unlimited maps."
+msgstr "Geben Sie einen gültigen Lizenzschlüssel im Menü unter - Maps > Lizenz - an, um unlimitiert Maps hinzufügen zu können."
+
+#: includes/admin.php:94
+msgid "%1$d / %2$d Maps"
+msgstr "%1$d / %2$d Maps"
+
+#: includes/admin.php:87
+msgid "Unlimited Maps"
+msgstr "Unbegrenzt Maps"
+
+#: includes/admin.php:135
+msgid "Load Google Maps"
+msgstr "Google Maps laden"
+
+#: includes/admin.php:117
+msgid "Map Settings"
+msgstr "Map-Einstellungen"
+
+#: includes/admin.php:164
+msgid "Shortcode:"
+msgstr "Shortcode:"
+
+#: includes/admin.php:178
+msgid "Button Settings"
+msgstr "Buttoneinstellungen"
+
+#: includes/admin.php:191
+msgid "Button Type:"
+msgstr "Button Typ:"
+
+#: includes/admin.php:198
+msgid "Rounded"
+msgstr "Abgerundet"
+
+#: includes/admin.php:206
+msgid "Squared"
+msgstr "Eckig"
+
+#: includes/admin.php:210
+msgid "Style Settings"
+msgstr "Stileinstellungen"
+
+#: includes/admin.php:215
+msgid "Light"
+msgstr "Hell"
+
+#: includes/admin.php:216
+msgid "Dark"
+msgstr "Dunkel"
+
+#: includes/admin.php:217
+msgid "Custom"
+msgstr "Angepasst"
+
+#: includes/admin.php:223
+msgid "Overlay Background Color:"
+msgstr "Hintergrundfarbe Überlagerung:"
+
+#: includes/admin.php:232
+msgid "Button Background Color:"
+msgstr "Hintergrundfarbe Button:"
+
+#: includes/admin.php:241
+msgid "Button Text Color:"
+msgstr "Textfarbe Button:"
+
+#: includes/admin.php:250
+msgid "Privacy Info Text Color:"
+msgstr "Textfarbe Datenschutzinformationen:"
+
+#: includes/admin.php:260
+msgid "Size Settings (% or px)"
+msgstr "Größeneinstellungen (% oder px)"
+
+#: includes/admin.php:262
+msgid "Width:"
+msgstr "Breite:"
+
+#: includes/admin.php:272
+msgid "Height:"
+msgstr "Höhe:"
+
+#: includes/admin.php:282
+msgid "Privacy Settings"
+msgstr "Datenschutzeinstellungen"
+
+#: includes/admin.php:291
+msgid "Enable privacy notice"
+msgstr "Datenschutzhinweis aktivieren"
+
+#: includes/admin.php:296
+msgid "Privacy Policy Text:"
+msgstr "Text für den Datenschutzhinweis:"
+
+#: includes/admin.php:306
+msgid "Privacy Policy URL Text:"
+msgstr "Text für die URL der Datenschutzerklärung:"
+
+#: includes/admin.php:316
+msgid "Privacy Policy URL:"
+msgstr "URL der Datenschutzerklärung:"
+
+#: includes/frontend.php:40
+msgid "Please see our"
+msgstr "Es gilt unsere"
+
+#: includes/frontend.php:41
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+#: includes/license.php:44
+msgid "Professional License"
+msgstr "Professional Lizenz"
+
+#: includes/license.php:124
+msgid "Professional License"
+msgstr "Professional Lizenz"
+
+#: includes/license.php:127
+msgid "Why upgrade to the Professional License?"
+msgstr "Warum auf die Professional Lizenz upgraden?"
+
+#: includes/license.php:129
+msgid "Unlimited Maps:"
+msgstr "Unbegrenzt Maps:"
+
+#: includes/license.php:129
+msgid "Remove the 3–map limit and add as many locations as you need."
+msgstr "Entfernen Sie das 3‑Karten‑Limit und fügen Sie so viele Standorte hinzu, wie Sie benötigen."
+
+#: includes/license.php:130
+msgid "Priority Support & Updates:"
+msgstr "Priorisierter Support & Updates:"
+
+#: includes/license.php:130
+msgid "Get fast, dedicated assistance and regular feature and security updates."
+msgstr "Erhalten Sie schnelle, dedizierte Hilfe und regelmäßige Funktions‑ und Sicherheitsupdates."
+
+#: includes/license.php:131
+msgid "Exclusive Pro Features COMING SOON:"
+msgstr "Exklusive Pro‑Funktionen BALD VERFÜGBAR:"
+
+#: includes/license.php:131
+msgid "Unlock advanced templates and more."
+msgstr "Schalten Sie erweiterte Vorlagen und mehr frei."
+
+#: includes/license.php:132
+msgid "Ongoing GDPR Compliance:"
+msgstr "Fortlaufende DSGVO‑Compliance:"
+
+#: includes/license.php:132
+msgid "Stay up-to-date with the latest data-protection standards."
+msgstr "Bleiben Sie auf dem neuesten Stand der Datenschutzstandards."
+
+#: includes/license.php:134
+msgid "Learn more about the Professional version at"
+msgstr "Weitere Informationen zur Professional‑Version finden Sie unter"
+
+#: includes/license.php:45
+msgid "License"
+msgstr "Lizenz"
+
+#: includes/license.php:63
+msgid "No license key provided."
+msgstr "Kein Lizenzschlüssel angegeben."
+
+#: includes/license.php:95
+msgid "Invalid server response."
+msgstr "Fehlerhafte Antwort vom Server."
+
+#: includes/license.php:166
+msgid "✅ License is valid, expires on %s."
+msgstr "✅ Lizenz ist gültig und läuft aus am %s."
+
+#: includes/license.php:169
+msgid "❌ License is invalid."
+msgstr "❌ Lizenz ist ungültig."
+
+#: includes/license.php:150
+msgid "Verify License Key"
+msgstr "Lizenzschlüssel prüfen"
+
+#: includes/license.php:157
+msgid "💪 Verifying..."
+msgstr "💪 Verifiziere..."
+
+#: includes/license.php:139
+msgid "License Key"
+msgstr "Lizenzschlüssel"
+
+#: includes/license.php:145
+msgid "Save License Key"
+msgstr "Lizenzschlüssel speichern"
+

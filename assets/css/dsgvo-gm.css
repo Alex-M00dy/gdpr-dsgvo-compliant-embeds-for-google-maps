@@ -1,0 +1,88 @@
+.dsgvo-gm-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.dsgvo-gm-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0
+}
+
+.dsgvo-gm-overlay {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dsgvo-gm-load-btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.dsgvo-gm-load-btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.dsgvo-gm-privacy-info {
+  font-size: 0.8em;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.dsgvo-gm-overlay.dsgvo-gm-light {
+  background: rgba(211, 211, 211, 0.8);
+}
+
+.dsgvo-gm-overlay.dsgvo-gm-dark {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dsgvo-gm-overlay.dsgvo-gm-custom {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.dsgvo-gm-load-btn.dsgvo-gm-light {
+  background: #191919;
+  color: #ffffff;
+}
+
+.dsgvo-gm-load-btn.dsgvo-gm-dark {
+  background: #ffffff;
+  color: #191919;
+}
+
+.dsgvo-gm-load-btn.dsgvo-gm-custom {
+  background: #0073aa;
+  color: #ffffff;
+}
+
+.dsgvo-gm-privacy-info.dsgvo-gm-light {
+  color: #191919;
+}
+
+.dsgvo-gm-privacy-info.dsgvo-gm-dark {
+  color: #ffffff;
+}
+
+.dsgvo-gm-privacy-info.dsgvo-gm-custom {
+  color: #666666;
+}
