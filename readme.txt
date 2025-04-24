@@ -64,6 +64,7 @@ Please find our Imprint here [Solution First Imprint](https://lg.m00dy.org/impre
 = 1.0.1 =
 * Bug Fix Privacy Info Spacing: Spacing between Privacy Info Text and Privacy Info Link.
 * Bug Fix Privacy Info Color: If user selects custom Privacy Info Text Color it now also applies to the link not only to the text.
+* Bug Fix JavaScript Integration of sandbox flags for iframe embedding: Allowed Pop-ups and Top-Level-Navigation to prevent COOP-Errors while opening "large map" by clicking a link inside the rendered iframe.
 
 = 1.0.0 =
 * Initial release: basic GDPR-DSGVO-compliant Google Maps iframe embed with limit of 3 maps with the free license and unlimited maps with the professional license
