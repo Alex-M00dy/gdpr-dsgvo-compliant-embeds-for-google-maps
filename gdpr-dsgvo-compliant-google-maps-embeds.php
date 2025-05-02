@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     GDPR-DSGVO compliant Google Maps Embeds
+ * Plugin Name:     GDPR-DSGVO compliant Embeds for Google Maps
  * Plugin URI:      https://lg.m00dy.org/gmaps-wordpress-plugin
  * Description:     Enables GDPR-compliant embedding of multiple Google Maps iframes with user consent, selectable light/dark design, and optional privacy policy notice.
  * Version:         1.0.1
@@ -62,7 +62,7 @@ function dsgvo_gm_deactivate() {
 }
 
 // Load Textdomain
-add_action( 'plugins_loaded', function() {
+add_action( 'init', function() {
     load_plugin_textdomain( 'gdpr-dsgvo-compliant-google-maps-embeds', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 } );
 

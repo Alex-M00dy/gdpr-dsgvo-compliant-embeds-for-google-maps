@@ -1,4 +1,4 @@
-=== GDPR-DSGVO compliant Google Maps Embeds ===
+=== GDPR-DSGVO compliant Embeds for Google Maps ===
 Contributors: solutionfirst
 Donate link: https://www.paypal.com/donate/?hosted_button_id=CUPZTPGSAHNKY
 Tags: google maps, dsgvo, gdpr, iframe, map, privacy, datenschutz, datenschutzgrundverordnung, google
@@ -15,7 +15,7 @@ Enables GDPR-DSGVO compliant embedding of multiple Google Maps iframes with user
 A flexible WordPress plugin that lets you create fully GDPR-DSGVO compliant Google Maps embeds with per-map customization right in the settings.
 Visit our live demonstration at [Live Plugin Demo - Solution First](https://plugin-demo.m00dy.org/live-demonstration/ "Live Plugin Demo")
 
-* GDPR-DSGVO compliant: Your Google Maps iframe embedding only loads after consenting via button click. Hence there are no requets made to Googles server beforehand.
+* GDPR-DSGVO compliant: Your Google Maps iframe embedding only loads after consenting via button click. Hence there are no requests made to Google's server beforehand.
 * Iframe Input: Paste your Google Maps iframe code and see the shortcode for easy insertion.
 * Consent Button: Define your own button text (e.g. Load Google Maps), choose rounded or square styling, and pick background and text colors.
 * Design Modes: Select a light or dark overlay or go “custom” to set your own overlay background, button colors and privacy-text colors via the WordPress color picker.
