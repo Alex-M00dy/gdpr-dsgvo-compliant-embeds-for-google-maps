@@ -41,8 +41,8 @@ add_action('admin_init', function () {
 add_action('admin_menu', function () {
     add_submenu_page(
         'edit.php?post_type=dsgvo_map',
-        __('Professional License', 'gdpr-dsgvo-compliant-google-maps-embeds'),
-        __('License', 'gdpr-dsgvo-compliant-google-maps-embeds'),
+        __('Professional License', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
+        __('License', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
         'manage_options',
         'dsgvo-gm-license',
         'dsgvo_gm_license_page'
@@ -60,7 +60,7 @@ add_action('wp_ajax_dsgvo_gm_check_license', function () {
     $domain = $_SERVER['HTTP_HOST'];
 
     if (empty($key)) {
-        wp_send_json_error(['message' => __('No license key provided.', 'gdpr-dsgvo-compliant-google-maps-embeds')]);
+        wp_send_json_error(['message' => __('No license key provided.', 'gdpr-dsgvo-compliant-embeds-for-google-maps')]);
     }
 
     // Clear any cached transient
@@ -92,7 +92,7 @@ add_action('wp_ajax_dsgvo_gm_check_license', function () {
         || empty($data['signature'])
         || empty($data['domain'])
     ) {
-        wp_send_json_error(['message' => __('Invalid server response.', 'gdpr-dsgvo-compliant-google-maps-embeds')]);
+        wp_send_json_error(['message' => __('Invalid server response.', 'gdpr-dsgvo-compliant-embeds-for-google-maps')]);
     }
 
     // Verify signature
@@ -121,40 +121,40 @@ function dsgvo_gm_license_page()
     $key = get_option('dsgvo_gm_license_key', '');
 ?>
     <div class="wrap">
-        <h1><?php esc_html_e('Professional License', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></h1>
+        <h1><?php esc_html_e('Professional License', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h1>
 
         <div class="dsgvo-gm-license-benefits">
-            <h2><?php esc_html_e('Why upgrade to the Professional License?', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></h2>
+            <h2><?php esc_html_e('Why upgrade to the Professional License?', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h2>
             <ul>
-                <li><strong><?php esc_html_e('Unlimited Maps:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></strong> <?php esc_html_e('Remove the 3–map limit and add as many locations as you need.', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></li>
-                <li><strong><?php esc_html_e('Priority Support & Updates:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></strong> <?php esc_html_e('Get fast, dedicated assistance and regular feature and security updates.', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></li>
-                <li><strong><?php esc_html_e('Exclusive Pro Features COMING SOON:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></strong> <?php esc_html_e('Unlock advanced templates and more.', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></li>
-                <li><strong><?php esc_html_e('Ongoing GDPR Compliance:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></strong> <?php esc_html_e('Stay up-to-date with the latest data-protection standards.', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></li>
+                <li><strong><?php esc_html_e('Unlimited Maps:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></strong> <?php esc_html_e('Remove the 3–map limit and add as many locations as you need.', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></li>
+                <li><strong><?php esc_html_e('Priority Support & Updates:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></strong> <?php esc_html_e('Get fast, dedicated assistance and regular feature and security updates.', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></li>
+                <li><strong><?php esc_html_e('Exclusive Pro Features COMING SOON:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></strong> <?php esc_html_e('Unlock advanced templates and more.', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></li>
+                <li><strong><?php esc_html_e('Ongoing GDPR Compliance:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></strong> <?php esc_html_e('Stay up-to-date with the latest data-protection standards.', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></li>
             </ul>
-            <p><?php esc_html_e('Learn more about the Professional version at', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>
+            <p><?php esc_html_e('Learn more about the Professional version at', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>
                 <a href="https://lg.m00dy.org/gmaps-wordpress-plugin" target="_blank" rel="noopener"><?php echo esc_html('https://lg.m00dy.org/gmaps-wordpress-plugin'); ?></a>
             </p>
         </div>
 
-        <h2><?php esc_html_e('License Key', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></h2>
+        <h2><?php esc_html_e('License Key', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h2>
         <div id="dsgvo_gm_check_status"></div>
 
         <form method="post" action="options.php" style="margin-top:20px; display:inline-block;">
             <?php settings_fields('dsgvo_gm_license'); ?>
             <input id="dsgvo_gm_license_key" type="text" name="dsgvo_gm_license_key" value="<?php echo esc_attr($key); ?>" class="regular-text" />
-            <input type="submit" class="button-primary" value="<?php esc_attr_e('Save License Key', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>" />
+            <input type="submit" class="button-primary" value="<?php esc_attr_e('Save License Key', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>" />
         </form>
 
         <br><br>
         <?php wp_nonce_field('dsgvo_gm_check_nonce', 'nonce'); ?>
-        <input type="button" id="dsgvo_gm_check_btn" class="button-secondary" value="<?php esc_attr_e('Verify License Key', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>" />
+        <input type="button" id="dsgvo_gm_check_btn" class="button-secondary" value="<?php esc_attr_e('Verify License Key', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>" />
 
         <script>
             jQuery(function($) {
                 $('#dsgvo_gm_check_btn').on('click', function() {
                     var status = $('#dsgvo_gm_check_status');
                     /* translators: Verifying o, e.g. Verifizieren */
-                    status.html('<span>' + <?php echo json_encode(__('💪 Verifying...', 'gdpr-dsgvo-compliant-google-maps-embeds')); ?> + '</span>');
+                    status.html('<span>' + <?php echo json_encode(__('💪 Verifying...', 'gdpr-dsgvo-compliant-embeds-for-google-maps')); ?> + '</span>');
                     $.post(ajaxurl, {
                         action: 'dsgvo_gm_check_license',
                         nonce: $('#nonce').val(),
@@ -163,10 +163,10 @@ function dsgvo_gm_license_page()
                         if (resp.success) {
                             if (resp.data.valid) {
                                 /* translators: License is valid, expires o, e.g. Lizenzschlüssel gültig */
-                                status.html('<span style="color:green;"><strong>' + <?php echo json_encode(__('✅ License is valid, expires on %s.', 'gdpr-dsgvo-compliant-google-maps-embeds')); ?>.replace('%s', resp.data.expires) + '</strong></span>');
+                                status.html('<span style="color:green;"><strong>' + <?php echo json_encode(__('✅ License is valid, expires on %s.', 'gdpr-dsgvo-compliant-embeds-for-google-maps')); ?>.replace('%s', resp.data.expires) + '</strong></span>');
                             } else {
                                 /* translators: License is invalid, e.g. Lizenzschlüssel ungültig */
-                                status.html('<span style="color:red;"><strong>' + <?php echo json_encode(__('❌ License is invalid.', 'gdpr-dsgvo-compliant-google-maps-embeds')); ?> + '</strong></span>');
+                                status.html('<span style="color:red;"><strong>' + <?php echo json_encode(__('❌ License is invalid.', 'gdpr-dsgvo-compliant-embeds-for-google-maps')); ?> + '</strong></span>');
                             }
                         } else {
                             status.html('<span style="color:red;"><strong>' +

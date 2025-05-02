@@ -17,7 +17,7 @@ add_shortcode('dsgvo_map', function ($atts) {
     $id = intval($atts['id']);
 
 
-    $btn_text      = get_post_meta($id, '_dsgvo_gm_button_text', true) ?: __('Load Map', 'gdpr-dsgvo-compliant-google-maps-embeds');
+    $btn_text      = get_post_meta($id, '_dsgvo_gm_button_text', true) ?: __('Load Map', 'gdpr-dsgvo-compliant-embeds-for-google-maps');
     $btn_shape      = get_post_meta($id, '_dsgvo_gm_button_shape', true);
     $overlay_bg    = get_post_meta($id, '_dsgvo_gm_overlay_bg',  true);
     $button_bg     = get_post_meta($id, '_dsgvo_gm_button_bg',   true);
@@ -37,8 +37,8 @@ add_shortcode('dsgvo_map', function ($atts) {
     $width_val  = $width_input  ? trim($width_input)  : '100%';
     $height_val = $height_input ? trim($height_input) : '100%';
 
-    $privacy_text = get_post_meta($id, '_dsgvo_gm_privacy_text', true) ?: __('Please see our', 'gdpr-dsgvo-compliant-google-maps-embeds');
-    $privacy_link_text = get_post_meta($id, '_dsgvo_gm_privacy_link_text', true) ?: __('Privacy Policy', 'gdpr-dsgvo-compliant-google-maps-embeds');
+    $privacy_text = get_post_meta($id, '_dsgvo_gm_privacy_text', true) ?: __('Please see our', 'gdpr-dsgvo-compliant-embeds-for-google-maps');
+    $privacy_link_text = get_post_meta($id, '_dsgvo_gm_privacy_link_text', true) ?: __('Privacy Policy', 'gdpr-dsgvo-compliant-embeds-for-google-maps');
 
     // Append 'px' if numeric
     if (preg_match('/^\d+$/', $width_val)) {

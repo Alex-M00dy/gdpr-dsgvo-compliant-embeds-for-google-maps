@@ -32,11 +32,11 @@ function dsgvo_gm_register_post_type()
 {
     register_post_type('dsgvo_map', array(
         'labels' => array(
-            'name'               => __('Maps', 'gdpr-dsgvo-compliant-google-maps-embeds'),
-            'singular_name'      => __('Map', 'gdpr-dsgvo-compliant-google-maps-embeds'),
-            'add_new_item'       => __('Add New Map', 'gdpr-dsgvo-compliant-google-maps-embeds'),
-            'edit_item'          => __('Edit Map', 'gdpr-dsgvo-compliant-google-maps-embeds'),
-            'all_items'          => __('All Maps', 'gdpr-dsgvo-compliant-google-maps-embeds'),
+            'name'               => __('Maps', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
+            'singular_name'      => __('Map', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
+            'add_new_item'       => __('Add New Map', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
+            'edit_item'          => __('Edit Map', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
+            'all_items'          => __('All Maps', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
         ),
         'public'        => false,
         'show_ui'       => true,
@@ -68,7 +68,7 @@ function dsgvo_gm_block_new_map($post_id, $post, $update)
             wp_die(
                 esc_html(sprintf(
                     /* translators: Information about maximum maps allowed, e.g. “Maximal 3 Karten erlaubt...” */
-                    esc_html__('Maximum %d maps allowed. Enter a valid license key under the "Maps > License" menu to unlock unlimited maps.', 'gdpr-dsgvo-compliant-google-maps-embeds'),
+                    esc_html__('Maximum %d maps allowed. Enter a valid license key under the "Maps > License" menu to unlock unlimited maps.', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
                     DSGVO_GM_MAX_MAPS
                 ))
             );
@@ -84,14 +84,14 @@ add_action( 'manage_posts_extra_tablenav', function ( $which ) {
 
     echo '<div class="alignleft actions">';
     if ( dsgvo_gm_is_license_valid() ) {
-        esc_html_e( 'Unlimited Maps', 'gdpr-dsgvo-compliant-google-maps-embeds' );
+        esc_html_e( 'Unlimited Maps', 'gdpr-dsgvo-compliant-embeds-for-google-maps' );
     } else {
         $count = wp_count_posts( 'dsgvo_map' )->publish;
 
         
         printf(
             /* translators: Display the count and max separated by a slash, followed by “Maps”. */
-            esc_html__( '%1$d / %2$d Maps', 'gdpr-dsgvo-compliant-google-maps-embeds' ),
+            esc_html__( '%1$d / %2$d Maps', 'gdpr-dsgvo-compliant-embeds-for-google-maps' ),
             esc_html( $count ),
             esc_html( DSGVO_GM_MAX_MAPS )
         );
@@ -114,7 +114,7 @@ add_action( 'manage_posts_extra_tablenav', function ( $which ) {
 add_action('add_meta_boxes', function () {
     add_meta_box(
         'dsgvo_gm_map_settings',
-        __('Map Settings', 'gdpr-dsgvo-compliant-google-maps-embeds'),
+        __('Map Settings', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
         'dsgvo_gm_map_settings_callback',
         'dsgvo_map',
         'normal',
@@ -132,7 +132,7 @@ function dsgvo_gm_map_settings_callback($post)
     // Retrieve existing values or defaults
     $iframe     = get_post_meta($post->ID, '_dsgvo_gm_iframe', true);
     $template   = get_post_meta($post->ID, '_dsgvo_gm_template',  true) ?: 'light';
-    $btn_text   = get_post_meta($post->ID, '_dsgvo_gm_button_text', true) ?: __('Load Google Maps', 'gdpr-dsgvo-compliant-google-maps-embeds');
+    $btn_text   = get_post_meta($post->ID, '_dsgvo_gm_button_text', true) ?: __('Load Google Maps', 'gdpr-dsgvo-compliant-embeds-for-google-maps');
     $btn_shape = get_post_meta($post->ID, '_dsgvo_gm_button_shape', true);
     if (! in_array($btn_shape, ['rounded', 'square'], true)) {
         $btn_shape = 'rounded'; // Default
@@ -161,7 +161,7 @@ function dsgvo_gm_map_settings_callback($post)
     }
 ?>
     <p>
-        <strong><?php esc_html_e('Shortcode:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></strong><br>
+        <strong><?php esc_html_e('Shortcode:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></strong><br>
         <input type="text" readonly style="width:100%;" value="<?php echo esc_attr("[dsgvo_map id=\"{$post->ID}\"]"); ?>" onclick="this.select();">
     </p>
 
@@ -170,16 +170,16 @@ function dsgvo_gm_map_settings_callback($post)
     <br>
 
     <p>
-        <label for="dsgvo_gm_iframe"><?php esc_html_e('iframe Code:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+        <label for="dsgvo_gm_iframe"><?php esc_html_e('iframe Code:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
         <textarea id="dsgvo_gm_iframe" name="dsgvo_gm_iframe" style="width:100%;height:100px;"><?php printf('%s', esc_textarea($iframe)); ?></textarea>
 
     </p>
 
-    <h4><?php esc_html_e('Button Settings', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></h4>
+    <h4><?php esc_html_e('Button Settings', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h4>
 
 
     <p>
-        <label><?php esc_html_e('Button Text:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+        <label><?php esc_html_e('Button Text:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
         <input
             type="text"
             name="dsgvo_gm_button_text"
@@ -188,14 +188,14 @@ function dsgvo_gm_map_settings_callback($post)
     </p>
 
     <p>
-        <label><?php esc_html_e('Button Type:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+        <label><?php esc_html_e('Button Type:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
         <label style="margin-right:1em;">
             <input
                 type="radio"
                 name="dsgvo_gm_button_shape"
                 value="rounded"
                 <?php checked($btn_shape, 'rounded'); ?> />
-            <?php esc_html_e('Rounded', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>
+            <?php esc_html_e('Rounded', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>
         </label>
         <label>
             <input
@@ -203,24 +203,24 @@ function dsgvo_gm_map_settings_callback($post)
                 name="dsgvo_gm_button_shape"
                 value="square"
                 <?php checked($btn_shape, 'square'); ?> />
-            <?php esc_html_e('Squared', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>
+            <?php esc_html_e('Squared', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>
         </label>
     </p>
 
-    <h4><?php esc_html_e('Style Settings', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></h4>
+    <h4><?php esc_html_e('Style Settings', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h4>
 
     <p>
-        <label><?php esc_html_e('Design:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+        <label><?php esc_html_e('Design:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
         <select id="dsgvo_gm_template" name="dsgvo_gm_template">
-            <option value="light" <?php selected($template, 'light'); ?>><?php esc_html_e('Light', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></option>
-            <option value="dark" <?php selected($template, 'dark');  ?>><?php esc_html_e('Dark',  'gdpr-dsgvo-compliant-google-maps-embeds'); ?></option>
-            <option value="custom" <?php selected($template, 'custom'); ?>><?php esc_html_e('Custom', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></option>
+            <option value="light" <?php selected($template, 'light'); ?>><?php esc_html_e('Light', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></option>
+            <option value="dark" <?php selected($template, 'dark');  ?>><?php esc_html_e('Dark',  'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></option>
+            <option value="custom" <?php selected($template, 'custom'); ?>><?php esc_html_e('Custom', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></option>
         </select>
     </p>
 
     <div id="dsgvo_gm_custom_colors" style="display:<?php printf('%s', esc_attr($template === 'custom' ? 'block' : 'none')); ?>;">
         <p>
-            <label><?php esc_html_e('Overlay Background Color:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+            <label><?php esc_html_e('Overlay Background Color:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
             <input
                 type="text"
                 name="dsgvo_gm_overlay_bg"
@@ -229,7 +229,7 @@ function dsgvo_gm_map_settings_callback($post)
                 data-default-color="#ffffff" />
         </p>
         <p>
-            <label><?php esc_html_e('Button Background Color:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+            <label><?php esc_html_e('Button Background Color:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
             <input
                 type="text"
                 name="dsgvo_gm_button_bg"
@@ -238,7 +238,7 @@ function dsgvo_gm_map_settings_callback($post)
                 data-default-color="#0073aa" />
         </p>
         <p>
-            <label><?php esc_html_e('Button Text Color:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+            <label><?php esc_html_e('Button Text Color:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
             <input
                 type="text"
                 name="dsgvo_gm_button_color"
@@ -247,7 +247,7 @@ function dsgvo_gm_map_settings_callback($post)
                 data-default-color="#ffffff" />
         </p>
         <p>
-            <label><?php esc_html_e('Privacy Info Text Color:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+            <label><?php esc_html_e('Privacy Info Text Color:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
             <input
                 type="text"
                 name="dsgvo_gm_privacy_color"
@@ -257,29 +257,29 @@ function dsgvo_gm_map_settings_callback($post)
         </p>
     </div>
 
-    <h4><?php esc_html_e('Size Settings (% or px)', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></h4>
+    <h4><?php esc_html_e('Size Settings (% or px)', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h4>
     <p>
-        <label for="dsgvo_gm_width"><?php esc_html_e('Width:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label>
+        <label for="dsgvo_gm_width"><?php esc_html_e('Width:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label>
         <input
             id="dsgvo_gm_width"
             name="dsgvo_gm_width"
             type="text"
             value="<?php printf('%s', esc_attr($width)); ?>"
             style="width:100px;"
-            placeholder="<?php esc_attr_e('100% or 600px', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>">
+            placeholder="<?php esc_attr_e('100% or 600px', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>">
     </p>
     <p>
-        <label for="dsgvo_gm_height"><?php esc_html_e('Height:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label>
+        <label for="dsgvo_gm_height"><?php esc_html_e('Height:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label>
         <input
             id="dsgvo_gm_height"
             name="dsgvo_gm_height"
             type="text"
             value="<?php printf('%s', esc_attr($height)); ?>"
             style="width:100px;"
-            placeholder="<?php esc_attr_e('100% or 450px', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>">
+            placeholder="<?php esc_attr_e('100% or 450px', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>">
     </p>
 
-    <h4><?php esc_html_e('Privacy Settings', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></h4>
+    <h4><?php esc_html_e('Privacy Settings', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h4>
 
     <p>
         <label>
@@ -288,12 +288,12 @@ function dsgvo_gm_map_settings_callback($post)
                 name="dsgvo_gm_privacy_enabled"
                 value="1"
                 <?php checked($privacy_enabled, 1); ?>>
-            <?php esc_html_e('Enable privacy notice', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?>
+            <?php esc_html_e('Enable privacy notice', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?>
         </label>
     </p>
 
     <p>
-        <label for="dsgvo_gm_privacy_text"><?php esc_html_e('Privacy Policy Text:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+        <label for="dsgvo_gm_privacy_text"><?php esc_html_e('Privacy Policy Text:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
         <input
             id="dsgvo_gm_privacy_text"
             name="dsgvo_gm_privacy_text"
@@ -303,7 +303,7 @@ function dsgvo_gm_map_settings_callback($post)
     </p>
 
     <p>
-        <label for="dsgvo_gm_privacy_link_text"><?php esc_html_e('Privacy Policy URL Text:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+        <label for="dsgvo_gm_privacy_link_text"><?php esc_html_e('Privacy Policy URL Text:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
         <input
             id="dsgvo_gm_privacy_link_text"
             name="dsgvo_gm_privacy_link_text"
@@ -313,7 +313,7 @@ function dsgvo_gm_map_settings_callback($post)
     </p>
 
     <p>
-        <label for="dsgvo_gm_privacy_link"><?php esc_html_e('Privacy Policy URL:', 'gdpr-dsgvo-compliant-google-maps-embeds'); ?></label><br>
+        <label for="dsgvo_gm_privacy_link"><?php esc_html_e('Privacy Policy URL:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
         <input
             id="dsgvo_gm_privacy_link"
             name="dsgvo_gm_privacy_link"
