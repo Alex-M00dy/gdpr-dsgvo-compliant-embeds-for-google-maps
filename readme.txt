@@ -1,4 +1,4 @@
-=== GDPR-DSGVO compliant Google Maps Embeds ===
+=== GDPR-DSGVO compliant Embeds for Google Maps ===
 Contributors: solutionfirst
 Donate link: https://www.paypal.com/donate/?hosted_button_id=CUPZTPGSAHNKY
 Tags: google maps, dsgvo, gdpr, iframe, map, privacy, datenschutz, datenschutzgrundverordnung, google
@@ -6,7 +6,7 @@ Requires at least: 4.9
 Tested up to: 6.8
 Stable tag: 1.0.1
 Requires PHP: 7.4.1
-License: GPLv2 or later
+License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Enables GDPR-DSGVO compliant embedding of multiple Google Maps iframes with user consent. Select light, dark or custom designs, add an optional privacy-policy notice, and upgrade to a professional license for unlimited maps.
@@ -15,7 +15,7 @@ Enables GDPR-DSGVO compliant embedding of multiple Google Maps iframes with user
 A flexible WordPress plugin that lets you create fully GDPR-DSGVO compliant Google Maps embeds with per-map customization right in the settings.
 Visit our live demonstration at [Live Plugin Demo - Solution First](https://plugin-demo.m00dy.org/live-demonstration/ "Live Plugin Demo")
 
-* GDPR-DSGVO compliant: Your Google Maps iframe embedding only loads after consenting via button click. Hence there are no requets made to Googles server beforehand.
+* GDPR-DSGVO compliant: Your Google Maps iframe embedding only loads after consenting via button click. Hence there are no requests made to Google's server beforehand.
 * Iframe Input: Paste your Google Maps iframe code and see the shortcode for easy insertion.
 * Consent Button: Define your own button text (e.g. Load Google Maps), choose rounded or square styling, and pick background and text colors.
 * Design Modes: Select a light or dark overlay or go “custom” to set your own overlay background, button colors and privacy-text colors via the WordPress color picker.
@@ -31,7 +31,7 @@ Why upgrade to the Professional License?
 * Exclusive Pro Features COMING SOON: Unlock advanced templates and more.
 * Ongoing GDPR Compliance: Stay up-to-date with the latest data-protection standards.
 
-Learn more about the Professional version at [Purchase Professional License - Solution First](https://lg.m00dy.org/gmaps-wordpress-plugin "Purchase Professional License")
+Learn more about the Professional version at [Buy Professional License - Solution First](https://lg.m00dy.org/buy/index.html "Buy Professional License")
 
 **Manual Installation**
 1. Upload the entire `gdpr-dsgvo-compliant-google-maps-embeds` folder to the `/wp-content/plugins/` directory.
@@ -64,6 +64,7 @@ Please find our Imprint here [Solution First Imprint](https://lg.m00dy.org/impre
 = 1.0.1 =
 * Bug Fix Privacy Info Spacing: Spacing between Privacy Info Text and Privacy Info Link.
 * Bug Fix Privacy Info Color: If user selects custom Privacy Info Text Color it now also applies to the link not only to the text.
+* Bug Fix JavaScript Integration of sandbox flags for iframe embedding: Allowed Pop-ups and Top-Level-Navigation to prevent COOP-Errors while opening "large map" by clicking a link inside the rendered iframe.
 
 = 1.0.0 =
 * Initial release: basic GDPR-DSGVO-compliant Google Maps iframe embed with limit of 3 maps with the free license and unlimited maps with the professional license
@@ -79,5 +80,5 @@ Visit Google Maps via website on your PC or laptop and search for your desired l
 Yes, this plugin is free to use for up to 3 different maps. If you want to add more than 3 different maps you may be interested in purchasing a **Professional License** to add unlimited maps.
 
 = Where can I find the license key? =
-Purchase the Professional version at [Purchase Professional License - Solution First](https://lg.m00dy.org/gmaps-wordpress-plugin "Purchase Professional License") and enter the key under **Maps → License**.
+Purchase the Professional version at [Purchase Professional License - Solution First](https://lg.m00dy.org/buy/index.html "Purchase Professional License") and enter the key under **Maps → License**.
 

@@ -38,6 +38,14 @@
                 return;
             }
 
+            var sandboxFlags = [
+                'allow-scripts',
+                'allow-same-origin',
+                'allow-popups',
+                'allow-popups-to-escape-sandbox',        
+                'allow-top-navigation-by-user-activation'
+            ];
+
             // 5) Create a new safe iframe
             var $safeIframe = $('<iframe>', {
                 src: url.href,
@@ -48,7 +56,7 @@
                 allowfullscreen: "",
                 loading: 'lazy',
                 referrerpolicy: 'no-referrer-when-downgrade',
-                sandbox: 'allow-scripts allow-same-origin allow-popups'
+                sandbox: sandboxFlags.join(' ')
             });
 
             // 6) Empty container and fill it with new safe iframe
