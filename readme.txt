@@ -3,7 +3,7 @@ Contributors: solutionfirst
 Donate link: https://www.paypal.com/donate/?hosted_button_id=CUPZTPGSAHNKY
 Tags: google maps, dsgvo, gdpr, iframe, map, privacy, datenschutz, datenschutzgrundverordnung, google
 Requires at least: 4.9
-Tested up to: 6.8.1
+Tested up to: 6.8
 Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv2
