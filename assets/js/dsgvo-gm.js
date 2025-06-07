@@ -12,7 +12,7 @@
         b64 = b64.replace(/\s+/g, '');
 
         try {
-            // 2) atob → rohes HTML
+            // 2) atob → raw HTML
             var html = atob(b64);
 
             // 3) Parsing with DOMParser (to stop inline scripts)
@@ -23,7 +23,7 @@
                 return;
             }
 
-            // 4) Allow only permitted URLs of google
+            // 4) Allow only permitted URLs of google (maps)
             var src = iframe.getAttribute('src');
             var url;
             try {

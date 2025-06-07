@@ -86,3 +86,26 @@
 .dsgvo-gm-privacy-info.dsgvo-gm-custom {
   color: #666666;
 }
+
+#dsgvo_gm_custom_colors.hidden {
+  display: none !important;
+}
+#dsgvo_gm_custom_colors.visible {
+  display: block !important;
+}
+
+.dsgvo-full-width {
+  width: 100% !important;
+}
+
+.dsgvo-width-100 {
+  width: 100px !important;
+}
+
+.dsgvo-height-100px {
+  height: 100px !important;
+}
+
+.dsgvo-margin-right {
+  margin-right: 1em !important;
+}

@@ -6,13 +6,9 @@
  * @license URI     https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-if (! defined('ABSPATH')) exit;
-
-// Load license functions
-require_once DSGVO_GM_PLUGIN_DIR . 'includes/license.php';
-
-define( 'DSGVO_GM_VERSION', '1.0' );
+define('DSGVO_GM_VERSION', '1.0.2');
 
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_style('wp-color-picker');
@@ -20,11 +16,10 @@ add_action('admin_enqueue_scripts', function () {
         'dsgvo-gm-color-picker',
         DSGVO_GM_PLUGIN_URL . 'assets/js/dsgvo-gm-color-picker.js',
         ['wp-color-picker', 'jquery'],
-        DSGVO_GM_VERSION, // eigene Version
+        DSGVO_GM_VERSION, 
         true
     );
 });
-
 
 // Register Custom Post Type
 add_action('init', 'dsgvo_gm_register_post_type');
@@ -46,71 +41,7 @@ function dsgvo_gm_register_post_type()
     ));
 }
 
-// Limit: remove "Add New" when max reached (unless license valid)
-add_action('admin_menu', function () {
-    // Only enforce for non-licensed users
-    if (! dsgvo_gm_is_license_valid()) {
-        $count = wp_count_posts('dsgvo_map')->publish;
-        if ($count >= DSGVO_GM_MAX_MAPS) {
-            remove_submenu_page('edit.php?post_type=dsgvo_map', 'post-new.php?post_type=dsgvo_map');
-        }
-    }
-});
-
-// Block new Maps when limit reached (unless license valid)
-add_action('save_post', 'dsgvo_gm_block_new_map', 10, 3);
-function dsgvo_gm_block_new_map($post_id, $post, $update)
-{
-    if ($post->post_type !== 'dsgvo_map' || $update) return;
-    if (! dsgvo_gm_is_license_valid()) {
-        $count = wp_count_posts('dsgvo_map')->publish;
-        if ($count >= DSGVO_GM_MAX_MAPS) {
-            wp_die(
-                esc_html(sprintf(
-                    /* translators: Information about maximum maps allowed, e.g. “Maximal 3 Karten erlaubt...” */
-                    esc_html__('Maximum %d maps allowed. Enter a valid license key under the "Maps > License" menu to unlock unlimited maps.', 'gdpr-dsgvo-compliant-embeds-for-google-maps'),
-                    DSGVO_GM_MAX_MAPS
-                ))
-            );
-        }
-    }
-}
-
-// Display limit in list view
-add_action( 'manage_posts_extra_tablenav', function ( $which ) {
-    if ( 'top' !== $which || get_post_type() !== 'dsgvo_map' ) {
-        return;
-    }
-
-    echo '<div class="alignleft actions">';
-    if ( dsgvo_gm_is_license_valid() ) {
-        esc_html_e( 'Unlimited Maps', 'gdpr-dsgvo-compliant-embeds-for-google-maps' );
-    } else {
-        $count = wp_count_posts( 'dsgvo_map' )->publish;
-
-        
-        printf(
-            /* translators: Display the count and max separated by a slash, followed by “Maps”. */
-            esc_html__( '%1$d / %2$d Maps', 'gdpr-dsgvo-compliant-embeds-for-google-maps' ),
-            esc_html( $count ),
-            esc_html( DSGVO_GM_MAX_MAPS )
-        );
-    }
-    echo '</div>';
-} );
-
-
-
-
-
-
-
-
-
-
-/**
- * Add meta box for DSGVO Maps
- */
+// Add meta box for DSGVO Maps
 add_action('add_meta_boxes', function () {
     add_meta_box(
         'dsgvo_gm_map_settings',
@@ -122,9 +53,7 @@ add_action('add_meta_boxes', function () {
     );
 });
 
-/**
- * Render settings fields
- */
+// Render settings fields
 function dsgvo_gm_map_settings_callback($post)
 {
     wp_nonce_field('dsgvo_gm_save', 'dsgvo_gm_nonce');
@@ -159,7 +88,7 @@ function dsgvo_gm_map_settings_callback($post)
     if ('' === $height) {
         $height = '100%';
     }
-?>
+    ?>
     <p>
         <strong><?php esc_html_e('Shortcode:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></strong><br>
         <input type="text" readonly style="width:100%;" value="<?php echo esc_attr("[dsgvo_map id=\"{$post->ID}\"]"); ?>" onclick="this.select();">
@@ -176,7 +105,6 @@ function dsgvo_gm_map_settings_callback($post)
     </p>
 
     <h4><?php esc_html_e('Button Settings', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h4>
-
 
     <p>
         <label><?php esc_html_e('Button Text:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
@@ -228,6 +156,7 @@ function dsgvo_gm_map_settings_callback($post)
                 class="wp-color-picker-field"
                 data-default-color="#ffffff" />
         </p>
+
         <p>
             <label><?php esc_html_e('Button Background Color:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
             <input
@@ -237,6 +166,7 @@ function dsgvo_gm_map_settings_callback($post)
                 class="wp-color-picker-field"
                 data-default-color="#0073aa" />
         </p>
+
         <p>
             <label><?php esc_html_e('Button Text Color:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
             <input
@@ -246,6 +176,7 @@ function dsgvo_gm_map_settings_callback($post)
                 class="wp-color-picker-field"
                 data-default-color="#ffffff" />
         </p>
+
         <p>
             <label><?php esc_html_e('Privacy Info Text Color:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label><br>
             <input
@@ -258,6 +189,7 @@ function dsgvo_gm_map_settings_callback($post)
     </div>
 
     <h4><?php esc_html_e('Size Settings (% or px)', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></h4>
+
     <p>
         <label for="dsgvo_gm_width"><?php esc_html_e('Width:', 'gdpr-dsgvo-compliant-embeds-for-google-maps'); ?></label>
         <input
@@ -322,28 +254,14 @@ function dsgvo_gm_map_settings_callback($post)
             style="width:100%;">
     </p>
 
-
-    <script>
-        jQuery(function($) {
-            // init color pickers
-            $('.wp-color-picker-field').wpColorPicker();
-            // toggle custom color fields
-            $('#dsgvo_gm_template').on('change', function() {
-                $('#dsgvo_gm_custom_colors').toggle(this.value === 'custom');
-            });
-        });
-    </script>
-
-<?php
+    <?php
 }
 
-/**
- * Save meta box data
- */
+// Save meta box data
 add_action('save_post', 'dsgvo_gm_save_meta');
 function dsgvo_gm_save_meta($post_id)
 {
-    if (! isset($_POST['dsgvo_gm_nonce']) || ! wp_verify_nonce($_POST['dsgvo_gm_nonce'], 'dsgvo_gm_save')) {
+    if (! isset($_POST['dsgvo_gm_nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['dsgvo_gm_nonce'])), 'dsgvo_gm_save')) {
         return;
     }
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -352,8 +270,6 @@ function dsgvo_gm_save_meta($post_id)
     if (get_post_type($post_id) !== 'dsgvo_map') {
         return;
     }
-
-
 
     // Iframe
     if (isset($_POST['dsgvo_gm_iframe'])) {
@@ -415,22 +331,12 @@ function dsgvo_gm_save_meta($post_id)
         }
     }
 
-    // Get saved Custom Colors:
-    $custom_field_values = [];
-    foreach ($custom_fields as $field_name => $meta_key) {
-        // get_post_meta returns the sole color string or '' if not set
-        $custom_field_values[$field_name] = get_post_meta($post_id, $meta_key, true);
-    }
-
-
     // Size: width & height
     if (isset($_POST['dsgvo_gm_width'])) {
         update_post_meta($post_id, '_dsgvo_gm_width', sanitize_text_field(wp_unslash($_POST['dsgvo_gm_width'])));
-        $width = sanitize_text_field(wp_unslash($_POST['dsgvo_gm_width']));
     }
     if (isset($_POST['dsgvo_gm_height'])) {
         update_post_meta($post_id, '_dsgvo_gm_height', sanitize_text_field(wp_unslash($_POST['dsgvo_gm_height'])));
-        $height = sanitize_text_field(wp_unslash($_POST['dsgvo_gm_height']));
     }
 
     // Privacy-Fields
@@ -442,43 +348,13 @@ function dsgvo_gm_save_meta($post_id)
             '_dsgvo_gm_privacy_link',
             esc_url_raw(wp_unslash($_POST['dsgvo_gm_privacy_link']))
         );
-        $link = esc_url_raw(wp_unslash($_POST['dsgvo_gm_privacy_link']));
     }
 
     if (isset($_POST['dsgvo_gm_privacy_text'])) {
         update_post_meta($post_id, '_dsgvo_gm_privacy_text', sanitize_text_field(wp_unslash($_POST['dsgvo_gm_privacy_text'])));
-        $privacy_text = sanitize_text_field(wp_unslash($_POST['dsgvo_gm_privacy_text']));
     }
 
     if (isset($_POST['dsgvo_gm_privacy_link_text'])) {
         update_post_meta($post_id, '_dsgvo_gm_privacy_link_text', sanitize_text_field(wp_unslash($_POST['dsgvo_gm_privacy_link_text'])));
-        $privacy_link_text = sanitize_text_field(wp_unslash($_POST['dsgvo_gm_privacy_link_text']));
     }
-
-
-
-
-    // Backup data after save
-    $data = [
-        'ID'                 => $post_id,
-        'title'              => sanitize_text_field(get_the_title($post_id)),
-        'iframe'             => $iframe,
-        'btn_text'           => $btn_text,
-        'btn_shape'          => $btn_shape,
-        'template'           => $tmpl,
-        'custom_fields'      => $custom_field_values,
-        'width'              => $width,
-        'height'             => $height,
-        'privacy_enabled'    => $enabled,
-        'privacy_text'       => $privacy_text,
-        'privacy_link_text'  => $privacy_link_text,
-        'privacy_link'       => $link
-    ];
-
-    $backup_dir = DSGVO_GM_PLUGIN_DIR . 'backups/';
-    if (! file_exists($backup_dir)) {
-        wp_mkdir_p($backup_dir);
-    }
-    $filename = $backup_dir . sprintf('map-%d-%s.txt', $post_id, gmdate('Ymd_His'));
-    file_put_contents($filename, print_r($data, true));
 }
