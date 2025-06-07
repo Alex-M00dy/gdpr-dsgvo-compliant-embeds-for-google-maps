@@ -20,23 +20,6 @@ foreach ( $maps as $map ) {
     wp_delete_post( $map->ID, true );
 }
 
-// Remove license key option
-delete_option( 'dsgvo_gm_license_key' );
-
-// Remove transients for license validation
-global $wpdb;
-// Delete transient values and timeouts matching our prefix
-$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_dsgvo_gm_license_%'" );
-$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_dsgvo_gm_license_%'" );
-
-
-// Remove complete Backup Directory
-$backup_dir = plugin_dir_path( __FILE__ ) . 'backups/';
-
-if ( ! is_dir( $backup_dir ) ) {
-    return;
-}
-
 // Credentials-Check & WP_Filesystem
 if ( ! function_exists( 'WP_Filesystem' ) ) {
     require_once ABSPATH . 'wp-admin/includes/file.php';

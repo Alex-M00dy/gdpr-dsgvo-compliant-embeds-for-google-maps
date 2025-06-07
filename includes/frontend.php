@@ -6,7 +6,7 @@
  * @license URI     https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-if (! defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 add_shortcode('dsgvo_map', function ($atts) {
     $atts = shortcode_atts(
@@ -96,10 +96,8 @@ add_shortcode('dsgvo_map', function ($atts) {
         '</button>';
     if ($privacy_enabled && $privacy_link) {
         $html .= '<div class="dsgvo-gm-privacy-info ' . esc_attr($class) . '" style="' . $privacy_style . '">'
-             /* translators: Privacy text, e.g. “Bitte schauen Sie in unsere...” */
             . esc_html( $privacy_text )
             . ' <a href="' . esc_url($privacy_link) . '" target="_blank" style="' . $privacy_style . '">'
-            /* translators: Privacy link text, e.g. “Datenschutz” */
             . esc_html( $privacy_link_text )
             . '</a></div>';
     }
