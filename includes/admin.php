@@ -8,7 +8,7 @@
 
 if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-define('DSGVO_GM_VERSION', '1.0.2');
+
 
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_style('wp-color-picker');
