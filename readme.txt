@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=CUPZTPGSAHNKY
 Tags: google maps, dsgvo, gdpr, iframe, map, privacy, datenschutz, datenschutzgrundverordnung, google
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 7.4
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,9 @@ Please find our Imprint here [Solution First Imprint](https://solutionfirst.m00d
 7. **Add/Edit map** screen with no input.
 
 == Changelog ==
+= 1.0.3 =
+* Code Refactoring (Removed duplicate of plugin constant, removed unnecessary calls during uninstall).
+
 = 1.0.2 =
 * Removed the map limit and license option. Now every user can add unlimited maps without any license key.
 * Removed call to load_plugin_textdomain() hence it's not needed anymore (only necessary for WordPress Versions < 4.6).
