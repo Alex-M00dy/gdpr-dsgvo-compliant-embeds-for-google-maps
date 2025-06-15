@@ -19,36 +19,3 @@ $maps = get_posts( array(
 foreach ( $maps as $map ) {
     wp_delete_post( $map->ID, true );
 }
-
-// Credentials-Check & WP_Filesystem
-if ( ! function_exists( 'WP_Filesystem' ) ) {
-    require_once ABSPATH . 'wp-admin/includes/file.php';
-}
-
-// If credentials are missing redirect to enter credentials
-if ( false === ( $credentials = request_filesystem_credentials( site_url() . '/wp-admin/', '', false, false, null ) ) ) {
-    return; // Cancel till credentials are given
-}
-
-if ( ! WP_Filesystem( $credentials ) ) {
-    return; // Cancel if error
-}
-
-global $wp_filesystem;
-
-// Remove files from directory
-$files = $wp_filesystem->dirlist( $backup_dir, false, true );
-foreach ( $files as $filename => $fileinfo ) {
-    if ( 'txt' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
-        $wp_filesystem->delete( trailingslashit( $backup_dir ) . $filename, false );
-    }
-}
-
-// Remove directory itself
-$wp_filesystem->rmdir( $backup_dir, true );
-
-
-
-// Flush rewrite rules in case CPT was removed
-flush_rewrite_rules();
-

@@ -4,7 +4,7 @@
  * Plugin Name:     GDPR-DSGVO compliant Embeds for Google Maps
  * Plugin URI:      https://solutionfirst.m00dy.org/wp-plugin/
  * Description:     Enables GDPR-compliant embedding of multiple Google Maps iframes with user consent, selectable light/dark design, and optional privacy policy notice.
- * Version:         1.0.2
+ * Version:         1.0.3
  * Author:          Solution First by M00dy
  * Author URI:      https://profiles.wordpress.org/solutionfirst/
  * Text Domain:     gdpr-dsgvo-compliant-embeds-for-google-maps
@@ -43,7 +43,7 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'dsgvo_gm_plugin_
 // Constants
 define('DSGVO_GM_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('DSGVO_GM_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('DSGVO_GM_VERSION', '1.0.2');
+define('DSGVO_GM_VERSION', '1.0.3');
 
 // Activation & Deactivation
 register_activation_hook(__FILE__, 'dsgvo_gm_activate');
